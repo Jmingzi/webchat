@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>聊天室登录</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styles/stylesheets/index.css" />
+	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<div class="top">
+		<div class="logo">
+			<h1>MingChatRoom <small>MING群聊网页版</small></h1>
+		</div>
+	</div>
+	<!-- 群聊 -->
+	<div class="msgbox cl">
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+	<script>
+	var socket=io.connect(),//与服务器进行连接
+		button=document.getElementById('sendBtn');
+	// button.onclick=function(){
+	// 	socket.emit('foo', 'hello');//发送一个名为foo的事件，并且传递一个字符串数据‘hello’
+	// }
+	</script>
+</body>
+</html>
