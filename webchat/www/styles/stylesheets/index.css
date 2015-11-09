@@ -274,10 +274,11 @@ html, body {
 /* line 33, ../sass/index.scss */
 .msgbox {
   width: 960px;
-  height: 500px;
+  height: 600px;
   margin: 50px auto;
   border: 1px #cdcdcd solid;
   background: #fff;
+  position: relative;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -285,16 +286,150 @@ html, body {
   -webkit-box-shadow: 5px 5px 5px #cdcdcd;
   box-shadow: 5px 5px 5px #cdcdcd;
 }
-/* line 42, ../sass/index.scss */
+/* line 43, ../sass/index.scss */
 .msgbox .left {
   width: 750px;
   height: inherit;
   float: left;
 }
-/* line 47, ../sass/index.scss */
+/* line 48, ../sass/index.scss */
 .msgbox .right {
   float: left;
   width: 210px;
   height: inherit;
   background: #eee;
+}
+/* line 54, ../sass/index.scss */
+.msgbox .msglist,
+.msgbox .toolbar,
+.msgbox .editor {
+  margin: 10px auto;
+}
+/* line 59, ../sass/index.scss */
+.msgbox .msglist {
+  width: 97%;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* line 65, ../sass/index.scss */
+.msgbox .mask {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7);
+}
+/* line 70, ../sass/index.scss */
+.msgbox .mask p {
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  padding-top: 250px;
+}
+/* line 78, ../sass/index.scss */
+.msgbox .toolbar {
+  width: 97%;
+  height: 30px;
+  border: 1px #f3f3f3 solid;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 84, ../sass/index.scss */
+.msgbox .msglist li {
+  margin-top: 13px;
+  padding-bottom: 13px;
+  border-bottom: 1px #f3f3f3 dashed;
+}
+/* line 90, ../sass/index.scss */
+.msgbox .alertMsg p {
+  text-align: center;
+  color: gray;
+}
+/* line 95, ../sass/index.scss */
+.msgbox .name {
+  color: #00a2ca;
+}
+/* line 98, ../sass/index.scss */
+.msgbox .me .name {
+  color: #FF3366;
+}
+/* line 101, ../sass/index.scss */
+.msgbox .admin .name {
+  color: #009966;
+}
+/* line 104, ../sass/index.scss */
+.msgbox .name span {
+  vertical-align: 15px;
+  padding-left: 10px;
+}
+/* line 108, ../sass/index.scss */
+.msgbox .content {
+  line-height: 25px;
+}
+/* line 111, ../sass/index.scss */
+.msgbox .editor {
+  width: 97%;
+  height: 130px;
+  position: relative;
+}
+/* line 116, ../sass/index.scss */
+.msgbox #chat-content {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0px;
+  line-height: 25px;
+  font-size: 14px;
+  font-family: inherit;
+}
+/* line 124, ../sass/index.scss */
+.msgbox #chat-content:focus {
+  border: none;
+  outline: 0px;
+}
+/* line 129, ../sass/index.scss */
+.msgbox .send {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+/* line 134, ../sass/index.scss */
+.msgbox .people {
+  margin: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/* line 138, ../sass/index.scss */
+.msgbox .people ul {
+  margin-left: 10px;
+}
+/* line 141, ../sass/index.scss */
+.msgbox .people li {
+  line-height: 30px;
+}
+/* line 143, ../sass/index.scss */
+.msgbox .people li span {
+  font-size: 12px;
+  float: right;
+}
+/* line 149, ../sass/index.scss */
+.msgbox .info-me {
+  width: 100%;
+  height: 210px;
+  border-bottom: 1px #cdcdcd solid;
+  text-align: center;
+}
+/* line 154, ../sass/index.scss */
+.msgbox .info-me img {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px #d9d9d9 solid;
+}
+/* line 159, ../sass/index.scss */
+.msgbox .info-me p {
+  text-align: left;
+  text-indent: 2em;
+  line-height: 20px;
 }

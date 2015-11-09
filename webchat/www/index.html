@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="styles/stylesheets/index.css" />
 	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+	<script src="/js/chat.js"></script>
+	<script src="/js/jquery.cookie.js"></script>
 </head>
 <body>
 	<div class="top">
@@ -15,15 +18,46 @@
 	</div>
 	<!-- 群聊 -->
 	<div class="msgbox cl">
-		<div class="left"></div>
-		<div class="right"></div>
+		<div class="mask">
+			<p>明明君正在努力连接服务器...</p>
+		</div>
+
+		<div class="left">
+			<ul class="msglist">
+				<li class="admin">
+					<p class="name"><img src="./styles/images/logo.png" alt="管理员" width="40px" height="40px" align="center"><span>[浙江·杭州] [最强王者] 明明君</span><span>2015-11-09 09:57:08</span></p>
+					<div class="content">
+						Hello！欢迎登录！在下明明君，有什么事情跟大家交流吧。
+					</div>
+				</li>
+			</ul>
+			
+			<div class="toolbar"></div>
+			<div class="editor">
+				<textarea name="" id="chat-content"></textarea>
+				<a href="javascript:;" class="send btn btn-blue" title="enter键发送">发送</a>
+			</div>
+		</div>
+		<div class="right">
+			<div class="info-me">
+				<img src="./styles/images/logo.png" id="avatar" width="90px" height="90px" alt="头像">
+				<p>[昵称] : <span class="chatName"></span></p>
+				<p>[等级] : 学吧</p>
+				<p>[地点] : <span class="address"></span></p>
+				<!-- <p>[上次登录] : 2015-11-09 10:39:30</p> -->
+			</div>
+			<ul class="people">
+				<li class="on">&gt;在线网友 [<small class="onlineNum"></small>人]</li>
+				<ul class="onlist"></ul>
+				<!-- <li class="off">&gt;离线人员 [10人]</li>
+				<ul class="offlist">
+					<li>JmingZI <span>[15/11/09 10:22:48]</span></li>
+					<li>JmingZI <span>[15/11/09 10:22:48]</span></li>
+					<li>JmingZI <span>[15/11/09 10:22:48]</span></li>
+					<li>JmingZI <span>[15/11/09 10:22:48]</span></li>
+				</ul> -->
+			</ul>
+		</div>
 	</div>
-	<script>
-	var socket=io.connect(),//与服务器进行连接
-		button=document.getElementById('sendBtn');
-	// button.onclick=function(){
-	// 	socket.emit('foo', 'hello');//发送一个名为foo的事件，并且传递一个字符串数据‘hello’
-	// }
-	</script>
 </body>
 </html>
