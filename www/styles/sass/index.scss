@@ -188,3 +188,15 @@ html,body{
 	font-size: 12px;
 	color: $gray;
 }	
+
+@media screen and (max-width: 1400px) {
+	.msgbox{
+		height: 400px;
+		.msglist{
+			height: 250px;
+		}
+		.editor{
+			height: 80px;
+		}
+	}
+}
