@@ -1,9 +1,4 @@
 @charset "utf-8";
-/*!
-* author : JmingZI
-* date : 2015年11月3日 11:29:23
-* blog : ymblog.net
-*/
 @import "base";
 @import "config";
 @import "compass/css3";
@@ -20,14 +15,53 @@ html,body{
 		height: inherit;
 		margin: 0px auto;
 	}
-	h1{
+	@at-root h1{
 		font-size: 30px;
 		font-weight: bold;
 		line-height: $topHeight;
+		small{
+			font-size: 12px;
+			color: $gray;
+		}
 	}
-	small{
-		font-size: 12px;
-		color: $gray;
+}
+.setName{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	background: #fff;
+	z-index: 100;
+	.setBox{
+		width: $setBoxWidth;
+		height: $setBoxHeight;
+		position: absolute;
+		margin-left: -($setBoxWidth / 2);
+		margin-top : -($setBoxHeight);
+		left: 50%;
+		top: 50%;
+	}
+	.inputName{
+		width: 200px;
+		height: 30px;
+	}
+	p{
+		margin-bottom: 10px;
+	}
+}
+.mask{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: rgba(0,0,0,0.7);
+	z-index: 101;
+	p{
+		width: 100%;
+		text-align: center;
+		vertical-align: middle;
+		color: #fff;
+		padding-top: 300px;
 	}
 }
 .msgbox{
@@ -37,7 +71,6 @@ html,body{
 	margin: 50px auto;
 	border: 1px lighten($gray, 30%) solid;
 	background: #fff;
-	position: relative;
 	@include border-radius(5px);
 	@include box-shadow(5px 5px 5px lighten($gray, 30%));
 	.left{
@@ -61,19 +94,6 @@ html,body{
 		height: $msglistHeight;
 		overflow-x:hidden;
 		overflow-y:auto;  
-	}
-	.mask{
-		position: absolute;
-		top: 0px;
-		left: 0px;
-		background: rgba(0,0,0,0.7);
-		p{
-			width: 100%;
-			text-align: center;
-			vertical-align: middle;
-			color: #fff;
-			padding-top: 250px;
-		}
 	}
 	.toolbar{
 		width: 97%;
@@ -163,5 +183,8 @@ html,body{
 		}
 	}
 }
-
-
+.copy{
+	text-align: center;
+	font-size: 12px;
+	color: $gray;
+}	

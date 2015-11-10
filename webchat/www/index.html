@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>聊天室登录</title>
+	<title>MingChatRoom - MING群聊网页版</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="styles/stylesheets/index.css" />
 	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
@@ -11,6 +11,18 @@
 	<script src="/js/jquery.cookie.js"></script>
 </head>
 <body>
+	<div class="setName">
+		<div class="setBox">
+		<h1>MingChatRoom<small> - MING群聊网页版</small></h1>
+		<p>加入聊天只需一步！</p>
+		<input type="text" class="inputName" placeholder="请输入3-12位昵称"/>
+		<a href="javascript:;" class="btn btn-blue set">加入聊天</a>
+		<a href="javascript:;" class="btn btn-red close">匿名进入</a>
+		</div>
+	</div>
+	<div class="mask">
+		<p>明明君正在努力连接服务器...</p>
+	</div>
 	<div class="top">
 		<div class="logo">
 			<h1>MingChatRoom <small>MING群聊网页版</small></h1>
@@ -18,10 +30,6 @@
 	</div>
 	<!-- 群聊 -->
 	<div class="msgbox cl">
-		<div class="mask">
-			<p>明明君正在努力连接服务器...</p>
-		</div>
-
 		<div class="left">
 			<ul class="msglist">
 				<li class="admin">
@@ -34,7 +42,7 @@
 			
 			<div class="toolbar"></div>
 			<div class="editor">
-				<textarea name="" id="chat-content"></textarea>
+				<textarea id="chat-content" placeholder="和大伙说点儿什么吧..."></textarea>
 				<a href="javascript:;" class="send btn btn-blue" title="enter键发送">发送</a>
 			</div>
 		</div>
@@ -42,7 +50,7 @@
 			<div class="info-me">
 				<img src="./styles/images/logo.png" id="avatar" width="90px" height="90px" alt="头像">
 				<p>[昵称] : <span class="chatName"></span></p>
-				<p>[等级] : 学吧</p>
+				<p>[等级] : <span class="level"></span></p>
 				<p>[地点] : <span class="address"></span></p>
 				<!-- <p>[上次登录] : 2015-11-09 10:39:30</p> -->
 			</div>
@@ -58,6 +66,10 @@
 				</ul> -->
 			</ul>
 		</div>
+	</div>
+	<!-- 版权 -->
+	<div class="copy">
+		&copy; 2015-11-09 JMingZI 版权所有. <a href="http://ymblog.net" target="_blank">我的博客</a>
 	</div>
 </body>
 </html>
