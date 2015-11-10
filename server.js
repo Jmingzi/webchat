@@ -1,18 +1,9 @@
-// var express = require('express'),
-// 	app = express(),
-// 	server = require('http').createServer(app),
-// 	    io = require('socket.io').listen(server),
-
-// 	    users = []; //保存所有在线的人
-// 	    samePeople = 0; //同一个人打开多个窗口
-
-// app.use('/', express.static(__dirname + '/www'));
-// server.listen(80);
 var express = require('express'),
     app = express(),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
     users = [];
+	samePeople = 0; //同一个人打开多个窗口
 //specify the html we will use
 app.use('/', express.static(__dirname + '/www'));
 //bind the server to the 80 port
