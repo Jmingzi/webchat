@@ -3,6 +3,8 @@
 <head>
 	<title>MingChatRoom - MING群聊网页版</title>
 	<meta charset="utf-8">
+	<meta name="keywords" content="网页聊天，在线群聊，MING群聊，websocket，nodejs在线聊天"/>
+	<meta name="description" content="MingChatRoom，是MING群聊网页版，使用nodejs的socket.io包，采用长连接的方式推送消息" />
 	<link rel="stylesheet" href="styles/stylesheets/index.css" />
 	<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
@@ -39,10 +41,15 @@
 					</div>
 				</li>
 			</ul>
-			
-			<div class="toolbar"></div>
+			<div class="toolbar">
+				<div class="expressionBox hide"></div>
+				<div class="bgBox hide"></div>
+				<input type="color" value="color" class="colorBox" /><a href="javascript:;" class="changeWordColor">文字颜色</a>
+				<a href="javascript:;" class="addLook">添加表情</a>
+				<a href="javascript:;" class="changebg">切换背景</a>
+			</div>
 			<div class="editor">
-				<textarea id="chat-content" placeholder="和大伙说点儿什么吧..."></textarea>
+				<textarea id="chat-content" placeholder="和大伙说点儿什么吧，enter键可发送消息哦..."></textarea>
 				<a href="javascript:;" class="send btn btn-blue" title="enter键发送">发送</a>
 			</div>
 		</div>
@@ -69,7 +76,7 @@
 	</div>
 	<!-- 版权 -->
 	<div class="copy">
-		&copy; 2015-11-09 JMingZI 版权所有. <a href="http://ymblog.net" target="_blank">我的博客</a>
+		&copy; 2015-11-09 JMingZI 版权所有. <a href="https://github.com/JMingZI/webchat" target="_blank">GIT地址</a> | <a href="http://ymblog.net" target="_blank">我的博客</a>
 	</div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 @import "config";
 @import "compass/css3";
 html,body{
-	width: 100%;height: 100%;overflow: hidden;background: lighten($gray, 40%);
+	width: 100%;height: 100%;overflow: hidden;background: #eee;
 }
 .top{
 	width: 100%;
@@ -70,7 +70,7 @@ html,body{
 	height: $msgboxHeight;
 	margin: 50px auto;
 	border: 1px lighten($gray, 30%) solid;
-	background: #fff;
+	background: rgba(255,255,255,0.8);
 	@include border-radius(5px);
 	@include box-shadow(5px 5px 5px lighten($gray, 30%));
 	.left{
@@ -82,7 +82,7 @@ html,body{
 		float: left;
 		width: $mainWidth - $msgLeftWidth;
 		height: inherit;
-		background: #eee;
+		background: rgba(220,220,220,0.8);
 	}
 	.msglist,
 	.toolbar,
@@ -99,7 +99,53 @@ html,body{
 		width: 97%;
 		height: $toolbarHeight;
 		border:1px lighten($gray, 45%) solid;
+		position: relative;
 		@include border-radius(3px);
+		.changebg,
+		.changeWordColor,
+		.addLook{
+			color: $mainColor;
+			line-height: $toolbarHeight;
+			padding-left: 10px;
+		}
+		.bgBox,
+		.expressionBox{
+			position: absolute;
+			padding: 10px;
+			background: #fff;
+			@include border-radius(3px);
+			@include box-shadow(0px 0px 5px rgba(0,0,0,0.3));
+			img{
+				cursor: pointer;
+				margin-left: 2px;
+			}
+		}
+		.bgBox{
+			width: $bgW;
+			height: $bgH;
+			left: 193px;
+			padding-right: 0px;
+			top : -($bgH + 25);
+			img{
+				margin-right: 10px;
+				margin-bottom: 10px;
+			}
+		}
+		.expressionBox{
+			width: $expressionBoxW;
+			height: $expressionBoxH;
+			top: -($expressionBoxH + 25);
+			left: 0px;
+		}
+		.colorBox{
+			margin-left: 10px;
+			vertical-align: -2px;
+			display: inline-block;
+			width: 30px;
+			padding: 0px;
+			border: none;
+			background-color: transparent;
+		}
 	}
 	.msglist li{
 		margin-top: 13px;
@@ -117,6 +163,17 @@ html,body{
 	}
 	.me .name{
 		color: $errorColor;
+		img{
+			float: right;
+			margin-left: 10px;
+		}
+		span{
+			vertical-align: -15px;
+		}
+	}
+	.me .content,
+	.me .name{
+		text-align: right;
 	}
 	.admin .name{
 		color : #009966;
@@ -127,11 +184,15 @@ html,body{
 	}
 	.content{
 		line-height: 25px;
+		.expre{
+			vertical-align: -5px;
+		}
 	}
 	.editor{
 		width: 97%;
 		height: $editorHeight;
 		position: relative;
+		background: transparent;
 	}
 	#chat-content{
 		width: 100%;
@@ -141,6 +202,7 @@ html,body{
 		line-height: 25px;
 		font-size: 14px;
 		font-family: inherit;
+		background: transparent;
 		&:focus{
 			border: none;
 			outline: 0px;

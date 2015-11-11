@@ -6,9 +6,10 @@ var express = require('express'),
 	samePeople = 0; //同一个人打开多个窗口
 //specify the html we will use
 app.use('/', express.static(__dirname + '/www'));
-//bind the server to the 80 port
-//server.listen(3000);//for local test
-server.listen(process.env.PORT || 3000);//publish to heroku
+//server.listen(3000);
+//for local test
+//publish to heroku
+server.listen(process.env.PORT || 3000);
 console.log('server started');
 
 //socket部分

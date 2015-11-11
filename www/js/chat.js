@@ -46,6 +46,10 @@ $(function(){
 			var score = parseInt($.cookie('levelScore')) + 2;
 			$.cookie('levelScore', score, { expires : 365 });
 			me.setScore(score);
+			//初始化背景图片
+			if( $.cookie('bg') != null ){
+				$('body').css({'background':'url(../expression/bg/'+$.cookie('bg')+')', 'background-size':'100% 100%'});
+			}
 			me.bind();
 		},
 		setName : function(){
@@ -76,11 +80,24 @@ $(function(){
 				me.levelName = me.level[6];
 			me.cfg.level.html(me.levelName);
 		},
+		replaceExpress : function(msg){
+			// var r = new RegExp('\[\d+\.gif\]', 'g');
+			var reg = /\[\d+\.gif\]/g;
+			var result, str;
+			// console.log(c);
+			// var str = msg.replace(r, '<img src="./expression/QQexpression/'+i+'.gif" alt="'+i+'.gif" align="center"/>');
+			while( result = reg.exec(msg) ){
+				msg = msg.replace(result[0], '<img class="expre" src="./expression/QQexpression/'+result[0].substr(1, (result[0].length-2) )+'" alt="qq表情" align="center"/>');
+			}
+			return msg;
+		},
 		displayMsg : function(user, name, avatar, msg, time){
 			var me = this;
+			//替换表情
+			msg = me.replaceExpress(msg)
 			var area = remote_ip_info.province + "·" + remote_ip_info.city;
 			var str = '<li class="'+user+'">'+
-				'<p class="name">'+
+				'<p class="name cl">'+
 				'<img src="./styles/images/'+avatar+'" alt="" width="40px" height="40px" align="center">'+
 				'<span>['+area+'] ['+me.levelName+'] '+name+'</span>'+
 				'<span>'+time+'</span></p>'+
@@ -125,6 +142,7 @@ $(function(){
 				var msg = name + ( type == 'login' ? "加入" : "离开" ) + "了会话";
 				var str = '<li class="alertMsg"><p>'+msg+'</p></li>';
 				me.cfg.panel.append(str);
+				me.cfg.panel.animate({ scrollTop : me.cfg.panel[0].scrollHeight }, 500);
 				me.cfg.onlineNum.html(userArr.length);
 				//在线人员列表
 				var str2 = '';
@@ -141,7 +159,7 @@ $(function(){
 
 			//绑定enter
 			me.cfg.content.focus(function(event) {
-				$('body').keydown(function(event) {
+				$('body').keyup(function(event) {
 					if( event.keyCode == 13 ){
 						me.cfg.send.click();
 					}
@@ -154,12 +172,89 @@ $(function(){
 					return false;
 
 				var msg = me.cfg.content.val();	
+				// 组合拼上颜色
+				var color = me.cfg.colorBox.val();
+				msg = "<div style='color:"+color+";'>" + msg + "</div>";
+
 				var time = (new Date()).toTimeString().substr(0, 8);
 				me.cfg.content.val('');
 				//将消息显示在自己的消息框内
 				me.displayMsg('me', me.arrName, me.avatar, msg, time);
 				//将消息发送给服务器
 				me.socket.emit('postMsg', me.arrName, msg, me.avatar, time);
+			});
+
+			// 点击添加表情
+			me.cfg.addLook.click(function(event) {
+				if( me.cfg.expreBox.hasClass('hide') ){
+					var expressionNum = 132;
+					var str = '';
+					for(var i = 1; i<= expressionNum; i++){
+						str += '<img src="./expression/QQexpression/'+i+'.gif" alt="'+i+'.gif" align="center"/>';
+					}
+					me.cfg.expreBox.html(str);
+					me.cfg.expreBox.removeClass('hide');
+				}else{
+					me.cfg.expreBox.addClass('hide');
+				}
+				event.stopPropagation();
+			});
+
+			//点击表情
+			me.cfg.expreBox.delegate('img', 'click', function(event){
+				var str = $(this).attr('alt');
+				me.cfg.content.val( me.cfg.content.val() +'['+str+']' );
+				$(this).parent().addClass('hide');
+				me.cfg.content.focus();
+				event.stopPropagation();
+			});
+			$(document).click(function(event) {
+				me.cfg.expreBox.addClass('hide');
+				me.cfg.bgBox.addClass('hide');
+			});
+
+			//切换背景
+			me.cfg.changebg.click(function(event) {
+				if( me.cfg.bgBox.hasClass('hide') ){
+					var bgNum = 5;
+					var str = '';
+					for(var i = 0; i<= bgNum; i++){
+						str += '<img src="./expression/bg/'+i+'_thumb.jpg" alt="'+i+'.jpg" align="center" width="100px" height="56px"/>';
+					}
+					me.cfg.bgBox.html(str);
+					me.cfg.bgBox.removeClass('hide');
+				}else{
+					me.cfg.bgBox.addClass('hide');
+				}
+				event.stopPropagation();
+			});
+
+			// 背景图片点击
+			me.cfg.bgBox.delegate('img', 'click', function(event){
+				var bg = $(this).attr('alt');
+				$(this).parent().addClass('hide');
+
+				if( bg.substr(0,1) != '0' ){
+					// 添加遮罩
+					me.cfg.mask.html('<p>明明君正在切换背景图片...</p>').removeClass('hide');
+					var img = new Image();
+					img.src = './expression/bg/'+bg;
+					img.onload = function(){
+						me.cfg.mask.addClass('hide');
+					}
+					// 写入cookie
+					$.cookie('bg', bg, { expires : 365 });
+					$('body').css({'background':'url(../expression/bg/'+bg+')', 'background-size':'100% 100%'});
+				}else{
+					$('body').css('background','#eee');
+					$.cookie('bg', null);
+				}
+				event.stopPropagation();
+			})
+
+			// 文字颜色
+			me.cfg.wordColor.click(function(event) {
+				me.cfg.colorBox.click();
 			});
 		}
 	}
@@ -178,6 +273,12 @@ $(function(){
 		set : 		$('.set'),
 		close : 	$('.close'),
 		inputName : $('.inputName'),
-		setName :   $('.setName')
+		setName :   $('.setName'),
+		addLook :   $('.addLook'),
+		expreBox :  $('.expressionBox'),
+		wordColor : $('.changeWordColor'),
+		colorBox :  $('.colorBox'),
+		changebg :  $('.changebg'),
+		bgBox : 	$('.bgBox')
 	});
 });
