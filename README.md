@@ -6,12 +6,12 @@ nodeJs 在线聊天室.
 ![demo](description.png)  
     
 功能说明：   
-1. 切换文字颜色;    
-2. 发送表情;   
-3. 切换背景图片;  
-4. 所在城市显示;    
-5. 等级积分制;   
-6. 昵称或匿名;
+1. 切换文字颜色;![demo](www/expression/QQexpression/5.gif)    
+2. 发送表情;[demo](www/expression/QQexpression/12.gif)       
+3. 切换背景图片;[demo](www/expression/QQexpression/123.gif)      
+4. 所在城市显示;[demo](www/expression/QQexpression/85.gif)        
+5. 等级积分制;[demo](www/expression/QQexpression/117.gif)       
+6. 昵称或匿名;[demo](www/expression/QQexpression/95.gif)    
 
 ************
 

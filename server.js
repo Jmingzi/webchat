@@ -3,7 +3,7 @@ var express = require('express'),
     server = require('http').createServer(app),
     io = require('socket.io').listen(server),
     users = [];
-	samePeople = 0; //同一个人打开多个窗口
+	// samePeople = 0; //同一个人打开多个窗口
 //specify the html we will use
 app.use('/', express.static(__dirname + '/www'));
 //server.listen(3000);
@@ -21,6 +21,8 @@ io.on('connection', function(socket) {
         //在线人数
         socket.userNowIndex = users.length;
         socket.name = name;
+        
+        var samePeople = 0;
         //遍历数组，如果该名字不存在则push
         for(var i = 0; i < users.length; i++){
 			if( users[i] == name )

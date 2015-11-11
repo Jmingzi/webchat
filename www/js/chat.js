@@ -118,7 +118,7 @@ $(function(){
 				if( me.check(me.cfg.inputName.val()) ){
 				//昵称合法
 				// 写入cookie后，发送服务器
-					var name = me.cfg.inputName.val();					
+					var name = me.cfg.inputName.val();			
 					$.cookie('chatName', name, { expires : 365 });
 					me.setName();
 				}else{
